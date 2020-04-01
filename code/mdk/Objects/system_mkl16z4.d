@@ -1,0 +1,10 @@
+.\objects\system_mkl16z4.o: ..\components\MKL16Z4\system_MKL16Z4.c
+.\objects\system_mkl16z4.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\system_mkl16z4.o: ..\components\MKL16Z4\fsl_device_registers.h
+.\objects\system_mkl16z4.o: ..\components\MKL16Z4\MKL16Z4.h
+.\objects\system_mkl16z4.o: ..\components\CMSIS\Include\core_cm0plus.h
+.\objects\system_mkl16z4.o: ..\components\CMSIS\Include\core_cmInstr.h
+.\objects\system_mkl16z4.o: ..\components\CMSIS\Include\cmsis_armcc.h
+.\objects\system_mkl16z4.o: ..\components\CMSIS\Include\core_cmFunc.h
+.\objects\system_mkl16z4.o: ..\components\MKL16Z4\system_MKL16Z4.h
+.\objects\system_mkl16z4.o: ..\components\MKL16Z4\MKL16Z4_features.h

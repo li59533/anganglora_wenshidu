@@ -1,0 +1,78 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.28.0.0
+Copyright (C) 2019 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 123 3, 241, LIC=7YKKP-MSXZ1-ZCHJY-IGNN5-IDFAI-NUK50
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Professional  Version: 5.28.0.0
+Toolchain Path:  D:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         SARMCM3.DLL V5.28.0.0
+Dialog DLL:      DARMCM1.DLL V1.19.2.0
+Target DLL:      Segger\JL2CM3.dll V2.99.36.0
+Dialog DLL:      TARMCM1.DLL V1.14.1.0
+ 
+<h2>Project:</h2>
+E:\github_project\anganglora_wenshidu\code\mdk\MKL16_withOSAL.uvprojx
+Project File Date:  03/31/2020
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'Normal'
+compiling bsp_iic.c...
+..\bsp\bsp_iic.c(302): warning:  #940-D: missing return statement at end of non-void function "I2C_ReadAccelWhoAmI" 
+  }
+..\bsp\bsp_iic.c(257): warning:  #177-D: variable "who_am_i_value"  was declared but never referenced
+      uint8_t who_am_i_value = 0x00;
+..\bsp\bsp_iic.c(258): warning:  #177-D: variable "accel_addr_array_size"  was declared but never referenced
+      uint8_t accel_addr_array_size = 0x00;
+..\bsp\bsp_iic.c(259): warning:  #177-D: variable "find_device"  was declared but never referenced
+      bool find_device = false;
+..\bsp\bsp_iic.c(260): warning:  #177-D: variable "i"  was declared but never referenced
+      uint8_t i = 0;
+..\bsp\bsp_iic.c(193): warning:  #177-D: function "i2c_release_bus_delay"  was declared but never referenced
+  static void i2c_release_bus_delay(void)
+..\bsp\bsp_iic.c: 6 warnings, 0 errors
+linking...
+Program Size: Code=25740 RO-data=852 RW-data=480 ZI-data=3992  
+".\Objects\MKL16_withOSAL.axf" - 0 Error(s), 6 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.6.0.pack
+                ARM.CMSIS.5.6.0
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.3.0
+   * Component: DSP Variant: Library Version: 1.7.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.Kinetis_KLxx_DFP.1.14.0.pack
+                Keil.Kinetis_KLxx_DFP.1.14.0
+                NXP Kinetis KLxx Series Device Support and Examples
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_Normal
+  D:\Keil_v5\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include
+  D:\Keil_v5\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\DSP\Include
+  D:\Keil_v5\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.14.0\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.3.0
+
+   * Component: ARM::CMSIS:DSP:Library:1.7.0
+      Include file:  CMSIS\DSP\Include\arm_math.h
+      Library file:  CMSIS\DSP\Lib\ARM\arm_cortexM0l_math.lib
+Build Time Elapsed:  00:00:04
+</pre>
+</body>
+</html>
