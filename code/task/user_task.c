@@ -29,6 +29,7 @@
 #include "app_conf.h"
 
 #include "bsp_iic.h"
+#include "bsp_hdc2010.h"
 /**
  * @addtogroup    user_task_Modules 
  * @{  
@@ -117,17 +118,13 @@ void UserTask_Init(uint8_t taskId)
 	BSP_LED_Blink( BSP_LED_TEST , 0 , 10, 1000);
 	
 	BSP_Power_V30_ON();
-	BSP_IIC_Init(BSP_IIC0);
-	UserTask_Send_Event(USER_TASK_GETDATA_EVENT);
-	OS_Timer_Start(g_UserTask_Id, USER_TASK_LOOP_EVENT,1000);
+	BSP_HDC2010_Init();
 }
 
 osal_event_t UserTask_Process(uint8_t taskid,osal_event_t events)
 {
     if (events & USER_TASK_LOOP_EVENT)
     {
-		DEBUG("USER_TASK_LOOP_EVENT\r\n");
-		I2C_ReadAccelWhoAmI();
 		OS_Timer_Start(g_UserTask_Id, USER_TASK_LOOP_EVENT,1000);			
         return events ^ USER_TASK_LOOP_EVENT;
     }
@@ -151,7 +148,12 @@ osal_event_t UserTask_Process(uint8_t taskid,osal_event_t events)
 		
         return events ^ USER_TASK_CONFREV_EVENT;
     }	
-	
+
+    if (events & USER_TASK_HDC2010_CORELOOP_EVENT)
+    {
+		BSP_HDC2010_CoreLoop();
+        return events ^ USER_TASK_HDC2010_CORELOOP_EVENT;
+    }	
 	
     return 0;
 }

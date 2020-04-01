@@ -68,8 +68,14 @@
  */
 void BSP_IIC_Init(uint8_t BSP_IICx);
 
-bool I2C_ReadAccelWhoAmI(void);
+void BSP_IIC_ReadBytes(uint8_t slavesddr , uint8_t addr , uint8_t * buf ,uint8_t len );
+void BSP_IIC_WriteBytes(uint8_t slavesddr , uint8_t addr , uint8_t *buf , uint8_t len );
 
+// -----------Test Func ------
+
+void BSP_IIC_TestFunc(void);
+bool I2C_ReadAccelWhoAmI(void);
+// ---------------------------
 /**
  * @}
  */

@@ -236,15 +236,76 @@ void BSP_IIC_Stop(uint8_t BSP_IICx )
 
 void BSP_IIC_Write_Byte(uint8_t slaveaddr , uint8_t addr , uint8_t value )
 {
-	
-	
-	
-	
+
+}
+
+void BSP_IIC_ReadBytes(uint8_t slavesddr , uint8_t addr , uint8_t * buf ,uint8_t len )
+{
+
+    i2c_master_transfer_t masterXfer;
+    memset(&masterXfer, 0, sizeof(masterXfer));
+
+    masterXfer.slaveAddress = slavesddr;
+    masterXfer.direction = kI2C_Read;
+    masterXfer.subaddress = addr;
+    masterXfer.subaddressSize = 1;
+    masterXfer.data = buf;
+    masterXfer.dataSize = len;
+    masterXfer.flags = kI2C_TransferDefaultFlag;
+
+
+	I2C_MasterTransferNonBlocking(I2C1, &g_m_handle, &masterXfer);
+
+	/*  wait for transfer completed. */
+	while ((!nakFlag) && (!completionFlag))
+	{
+		
+	}
+	completionFlag = false;
+	nakFlag = false;
 	
 }
 
 
+void BSP_IIC_WriteBytes(uint8_t slavesddr , uint8_t addr , uint8_t *buf , uint8_t len )
+{
+
+    i2c_master_transfer_t masterXfer;
+    memset(&masterXfer, 0, sizeof(masterXfer));
+
+    masterXfer.slaveAddress = slavesddr;
+    masterXfer.direction = kI2C_Write;
+    masterXfer.subaddress = addr;
+    masterXfer.subaddressSize = 1;
+    masterXfer.data = buf;
+    masterXfer.dataSize = len;
+    masterXfer.flags = kI2C_TransferDefaultFlag;
+
+
+	I2C_MasterTransferNonBlocking(I2C1, &g_m_handle, &masterXfer);
+
+	/*  wait for transfer completed. */
+	while ((!nakFlag) && (!completionFlag))
+	{
+		
+	}
+	completionFlag = false;
+	nakFlag = false;
+	
+}
+
+
+
 // -----------Test Func --------------
+
+void BSP_IIC_TestFunc(void)
+{
+	
+	uint8_t temp[3] = {0x12 , 0x45 , 0xfe};
+	BSP_IIC_WriteBytes(0x40 , 0x07 , temp , 3);
+
+}
+
 
 bool I2C_ReadAccelWhoAmI(void)
 {
@@ -279,12 +340,13 @@ bool I2C_ReadAccelWhoAmI(void)
     i2c_master_transfer_t masterXfer;
     memset(&masterXfer, 0, sizeof(masterXfer));
 
+	uint8_t temp = 0;
 
     masterXfer.slaveAddress = 0x40;
     masterXfer.direction = kI2C_Read;
-    masterXfer.subaddress = 0;
-    masterXfer.subaddressSize = 0;
-    masterXfer.data = &who_am_i_reg;
+    masterXfer.subaddress = 0xfe;
+    masterXfer.subaddressSize = 1;
+    masterXfer.data = &temp;
     masterXfer.dataSize = 1;
     masterXfer.flags = kI2C_TransferDefaultFlag;
 
@@ -296,9 +358,12 @@ bool I2C_ReadAccelWhoAmI(void)
 	{
 		
 	}
-
+	completionFlag = false;
 	nakFlag = false;
 
+	
+	DEBUG("temp:%x\r\n" , temp);
+	
 }
 
 
